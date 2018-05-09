@@ -5,7 +5,7 @@
 #include <iostream>			//allow streaming
 using namespace std;
 
-enum regnum {ax = 0, bx, cx, dx, si, di, bp, sp, 8, 9 , 10, 11, 12, 13, 14, 15};
+enum regnum {ax = 0, bx, cx, dx, si, di, bp, sp};
 
 
 
@@ -42,6 +42,7 @@ int main(int argc, char *argv[]){
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~fix input for common errors~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	char fixedcommand[100];
+	regnum regnum;
 
 	while(fgets(fixedcommand, 100, input)){	//puts the line from file to fixedcommand one by one
 		for(int i=0; i<sizeof(fixedcommand); i++){
@@ -52,7 +53,7 @@ int main(int argc, char *argv[]){
 		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~convert reg names to reg numbers~~~~~~~~~~~~~~~~~~~~~~~~
 		for(int i=0; i<sizeof(fixedcommand); i++){
 			if(fixedcommand[i] == '%'){
-				i++;
+					
 			
 			}
 		}	
