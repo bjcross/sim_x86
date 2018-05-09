@@ -8,8 +8,10 @@ int main(int argc, char *argv[]){
    FILE* output = NULL;		//pointer to the file we will write to with memory information
 
 	if (argc == 3){ 			//check for the correct number of arguments (2) input/output files
-		input = fopen(argv[0], "r");
-		output = fopen(argv[1], "w");		
+
+		cout << argv[0] << " : " << argv[1] << endl;
+		input = fopen(argv[1], "r");
+		output = fopen(argv[2], "w");		
 	}
 	else {
 		cout << "Please enter (INPUT OUTPUT) and nothing more" << endl;
@@ -20,7 +22,6 @@ int main(int argc, char *argv[]){
 		cout << "Atleast one of the input files doesn't exist" << endl;
 		exit(0);
 	}
-
 
 
 
@@ -35,10 +36,9 @@ int main(int argc, char *argv[]){
 
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~fix input for common errors~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	char* fixedcommand;
+	char fixedcommand[100];
 
-	while (!feof(input)){
-		fgets(fixedcommand, 100, input);
+	while(fgets(fixedcommand, 100, input)){
 		cout << "Commands: " << fixedcommand << endl;	
 
 
