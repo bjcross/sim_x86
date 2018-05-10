@@ -59,7 +59,7 @@ int main(int argc, char *argv[]){
 		for(int i=0; i<sizeof(fixedcommand); i++){
 			if(fixedcommand[i] == '%'){
 				i++;
-				char reg[] = {fixedcommand[i], fixedcommand[i+1]};
+				char reg[3] = {fixedcommand[i], fixedcommand[i+1], '\0'};
 				if (!strcmp(reg, "ax")){
 					fixedcommand[i] = '0';
 					i++;
@@ -105,7 +105,7 @@ int main(int argc, char *argv[]){
 		}	
 		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~store this code to instruction memory~~~~~~~~~~~~~~~~~~
 		strcpy(im[instructionnum], fixedcommand);
-		cout << im[instructionnum];
+		cout << "HERE: " << im[instructionnum];
 		instructionnum++;
 	}
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
