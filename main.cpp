@@ -4,12 +4,17 @@
 #include <string.h>
 #include <string>
 #include <iostream>			//allow streaming
-
+#include <mutex>
 
 #include "main.h"
+#include "pipeline/if.cpp"
+#include "pipeline/id.cpp"
+#include "pipeline/ex.cpp"
+#include "pipeline/mem.cpp"
+#include "pipeline/wb.cpp"
+
+
 using namespace std;
-
-
 int main(int argc, char *argv[]){
    FILE* input = NULL; 		//pointer to the file that we will be using to input x86 code
    FILE* output = NULL;		//pointer to the file we will write to with memory information
