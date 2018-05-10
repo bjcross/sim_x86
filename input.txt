@@ -1,3 +1,5 @@
-HI MOw
+%ax
+%rx 
+%ax%rx
 why do dogs have tails
 end

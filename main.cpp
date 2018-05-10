@@ -1,13 +1,13 @@
 #include <stdio.h>			//standard also allows fopen
 #include <stdlib.h>
 #include <algorithm>
+#include <string.h>
 #include <string>
 #include <iostream>			//allow streaming
+
+
+#include "main.h"
 using namespace std;
-
-enum regnum {ax = 0, bx, cx, dx, si, di, bp, sp};
-
-
 
 
 int main(int argc, char *argv[]){
@@ -31,10 +31,11 @@ int main(int argc, char *argv[]){
 
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~set initial conditions~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/*	for (i=0; i<regnum; i++){	//set all the registers to be empty for start of program
-		reg[i]=0;
+	for (int i=0; i<sizeof(registers); i++){	//set all the registers to be empty for start of program
+		registers[i]=0;
 	}
-*/
+	int instructionnum = 0;
+
 
 
 
@@ -42,7 +43,6 @@ int main(int argc, char *argv[]){
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~fix input for common errors~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	char fixedcommand[100];
-	regnum regnum;
 
 	while(fgets(fixedcommand, 100, input)){	//puts the line from file to fixedcommand one by one
 		for(int i=0; i<sizeof(fixedcommand); i++){
@@ -53,12 +53,55 @@ int main(int argc, char *argv[]){
 		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~convert reg names to reg numbers~~~~~~~~~~~~~~~~~~~~~~~~
 		for(int i=0; i<sizeof(fixedcommand); i++){
 			if(fixedcommand[i] == '%'){
-					
-			
+				i++;
+				char reg[] = {fixedcommand[i], fixedcommand[i+1]};
+				if (!strcmp(reg, "ax")){
+					fixedcommand[i] = '0';
+					i++;
+					fixedcommand[i] = ' ';
+				}
+				else if (!strcmp(reg, "bx")){
+					fixedcommand[i] = '1';
+					i++;
+					fixedcommand[i] = ' ';
+				}
+				else if (reg == "cx"){
+					fixedcommand[i] = '2';
+					i++;
+					fixedcommand[i] = ' ';
+				}
+				else if (reg == "dx"){
+					fixedcommand[i] = '3';
+					i++;
+					fixedcommand[i] = ' ';
+				}
+				else if (reg == "si"){
+					fixedcommand[i] = '4';
+					i++;
+					fixedcommand[i] = ' ';
+				}
+				else if (reg == "di"){
+					fixedcommand[i] = '5';
+					i++;
+					fixedcommand[i] = ' ';
+				}
+				else if (reg == "bp"){
+					fixedcommand[i] = '6';
+					i++;
+					fixedcommand[i] = ' ';
+				}
+				else if (reg == "sp"){
+					fixedcommand[i] = '7';
+					i++;
+					fixedcommand[i] = ' ';
+				}
+				i++;
 			}
 		}	
 		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~store this code to instruction memory~~~~~~~~~~~~~~~~~~
-
-
+		strcpy(im[instructionnum], fixedcommand);
+		cout << im[instructionnum];
+		instructionnum++;
 	}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 }
