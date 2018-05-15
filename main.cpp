@@ -1,20 +1,6 @@
-#include <stdio.h>			//standard also allows fopen
-#include <stdlib.h>
-#include <algorithm>
-#include <string.h>
-#include <string>
-#include <iostream>			//allow streaming
-#include <mutex>
-
 #include "main.h"
-#include "pipeline/if.cpp"
-#include "pipeline/id.cpp"
-#include "pipeline/ex.cpp"
-#include "pipeline/mem.cpp"
-#include "pipeline/wb.cpp"
 
 
-using namespace std;
 int main(int argc, char *argv[]){
    FILE* input = NULL; 		//pointer to the file that we will be using to input x86 code
    FILE* output = NULL;		//pointer to the file we will write to with memory information
@@ -24,12 +10,12 @@ int main(int argc, char *argv[]){
 		output = fopen(argv[2], "w");		
 	}
 	else {
-		cout << "Please enter (INPUT OUTPUT) and nothing more" << endl;
+		std::cout << "Please enter (INPUT OUTPUT) and nothing more" << std::endl;
 		exit(0);
 	}
 
 	if (input == NULL || output == NULL){	//check that the inpute files exist
-		cout << "Atleast one of the input files doesn't exist" << endl;
+		std::cout << "Atleast one of the input files doesn't exist" << std::endl;
 		exit(0);
 	}
 
@@ -105,7 +91,7 @@ int main(int argc, char *argv[]){
 		}	
 		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~store this code to instruction memory~~~~~~~~~~~~~~~~~~
 		strcpy(im[instructionnum], fixedcommand);
-		cout << "HERE: " << im[instructionnum];
+		std::cout << "HERE: " << im[instructionnum];
 		instructionnum++;
 	}
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
