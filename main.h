@@ -18,7 +18,10 @@ struct instructions{
 };
 
 
-struct instructions im[1000];
+
+
+//struct instructions im[1000];
+char im[1000][100];
 int registers[14];
 
 //struct 
