@@ -8,7 +8,17 @@
 #include <algorithm>
 
 
-char im[1000][100];
+struct instructions{
+	int opcode;
+	int destination;
+	int source1;
+	int source2;
+	int imm;
+	int writereg;
+};
+
+
+struct instructions im[1000];
 int registers[14];
 
 //struct 

@@ -4,7 +4,7 @@ LDLIBS = -std=c++11 -lpthread
 
 all: sim_x86
 
-sim_x86: main.cpp main.h
+sim_x86: main.cpp
 
 clean:
 	rm *.o

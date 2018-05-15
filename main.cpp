@@ -90,8 +90,9 @@ int main(int argc, char *argv[]){
 			}
 		}	
 		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~store this code to instruction memory~~~~~~~~~~~~~~~~~~
-		strcpy(im[instructionnum], fixedcommand);
-		std::cout << "HERE: " << im[instructionnum];
+		//strcpy(im[instructionnum], fixedcommand);
+		im[instructionnum].opcode = 1;
+//		std::cout << "HERE: " << im[instructionnum];		//this line is only for debugging~~~~~~~
 		instructionnum++;
 	}
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
