@@ -50,13 +50,13 @@ int main(int argc, char *argv[]){
 	char fixedcommand[100];
 
 	while(fgets(fixedcommand, 100, input)){	//puts the line from file to fixedcommand one by one
+		for(int i=0; i<sizeof(fixedcommand); i++){
+			fixedcommand[i] = tolower(fixedcommand[i]);
+		}
 		
 
 		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~convert reg names to reg numbers~~~~~~~~~~~~~~~~~~~~~~~~
 		for(int i=0; i<sizeof(fixedcommand); i++){
-
-			fixedcommand[i] = tolower(fixedcommand[i]);
-
 			if(fixedcommand[i] == '%'){
 				i++;
 				char reg[3] = {fixedcommand[i], fixedcommand[i+1], '\0'};
@@ -70,52 +70,40 @@ int main(int argc, char *argv[]){
 					i++;
 					fixedcommand[i] = ' ';
 				}
-				else if (!strcmp(reg, "cx")){
+				else if (reg == "cx"){
 					fixedcommand[i] = '2';
 					i++;
 					fixedcommand[i] = ' ';
 				}
-				else if (!strcmp(reg, "dx")){
+				else if (reg == "dx"){
 					fixedcommand[i] = '3';
 					i++;
 					fixedcommand[i] = ' ';
 				}
-				else if (!strcmp(reg, "si")){
+				else if (reg == "si"){
 					fixedcommand[i] = '4';
 					i++;
 					fixedcommand[i] = ' ';
 				}
-				else if (!strmcp(reg, "di")){
+				else if (reg == "di"){
 					fixedcommand[i] = '5';
 					i++;
 					fixedcommand[i] = ' ';
 				}
-				else if (!strcmp(reg, "bp")){
+				else if (reg == "bp"){
 					fixedcommand[i] = '6';
 					i++;
 					fixedcommand[i] = ' ';
 				}
-				else if (!strmcp(reg, "sp")){
+				else if (reg == "sp"){
 					fixedcommand[i] = '7';
 					i++;
 					fixedcommand[i] = ' ';
 				}
-				else{
-					cout << "INVALID REGISTER" << endl;
-					exit(0);
-				}
-
 				i++;
 			}
 		}	
 		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~store this code to instruction memory~~~~~~~~~~~~~~~~~~
-
-		for(int i=0; i<sizeof(fixedcommand); i++){
-			while(isalpha(fixedcommand[i])){
-
-			}
-		}
-
 		strcpy(im[instructionnum], fixedcommand);
 		cout << "HERE: " << im[instructionnum];
 		instructionnum++;

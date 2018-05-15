@@ -1,23 +1,23 @@
 x86: main.o if.o id.o ex.o mem.o wb.o
-	g++ -o x86 main.o x86.o -std=c++11
+	g++ -o x86 main.o frac.o
 
 main.o: main.cpp main.h
-	g++ -o main.cpp -std=c++11 main.o
+	g++ -c main.cpp
 
 if.o: if.cpp main.h
-	g++ -o if.cpp -std=c++11 if.o
+	g++ -c if.cpp
 
 id.o: id.cpp main.h
-	g++ -o id.cpp -std=c++11
+	g++ -c id.cpp
 
 ex.o: ex.cpp main.h
-	g++ -o ex.cpp -std=c++11
+	g++ -c ex.cpp
 
 mem.o: mem.cpp main.h
-	g++ -o mem.cpp -std=c++11
+	g++ -c mem.cpp
 
 wb.o: wb.cpp main.h
-	g++ -o wb.cpp -std=c++11
+	g++ -c wb.cpp
 
 clean:
 	rm *.o x86
